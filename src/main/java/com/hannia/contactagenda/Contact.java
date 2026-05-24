@@ -20,6 +20,7 @@ public class Contact {
     }
 
     public String getPhone(){
+
         return phone;
     }
     public void setPhone(String phone){

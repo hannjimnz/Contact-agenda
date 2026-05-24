@@ -1,0 +1,25 @@
+body{
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    text-align: center;
+    margin: 40px;
+}
+
+form input{
+    margin: 5px;
+    padding: 8px;
+
+}
+
+button{
+    background-color: #1693b4;
+    color: white;
+    border: none;
+    padding: 8px 12px ;
+    cursor: pointer;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0;
+}
