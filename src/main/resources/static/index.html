@@ -17,12 +17,47 @@
     </form>
     <h2>Lista de contactos</h2>
     <ul id="contactList"></ul>
-    <scrip>
 
-        <!--
-        aqui vamos a poner el js para conectar con nuestra apo
-        -->
+    <script>
+        const apiUrl = "http://localhost:8080/contacts";
+        const contactList = document.getElementById("contactList");
+        const form = document.getElementById("contactForm");
 
-    </scrip>
+        async function loadContacts(){
+            const response = await fetch(apiUrl);
+            const contacts = await response.json();
+            contactList.innerHTML = "";
+            contacts.forEach(c => {
+                const li = document.createElement("li");
+                li.textContent = `${c.name} - ${c.phone} - ${c.email}`;
+                contactList.appendChild(li);
+            });
+        }
+
+        form.addEventListener("submit", async (e) =>{
+            e.preventDefault();
+            const newContact = {
+                name: document.getElementById("name").value,
+                phone: document.getElementById("phone").value,
+                email: document.getElementById("email").value
+            };
+            await fetch(apiUrl, {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(newContact)
+            });
+            form.reset();
+            loadContacts();
+        });
+    </script>
+
+
+
+
+
+
+
+
+
 </body>
 </html>
