@@ -30,8 +30,35 @@
             contacts.forEach(c => {
                 const li = document.createElement("li");
                 li.textContent = `${c.name} - ${c.phone} - ${c.email}`;
+
+                const editBtn = document.createElement("button");
+                editBtn.textContent = "Editar";
+                editBtn.onclick = () => updateContact(c.name);
+
+                const delBtn = document.createElement("button");
+                delBtn.textContent = "Eliminar";
+                delBtn.onclick = () => deleteContact (c.name);
+
+                li.appendChild(editBtn);
+                li.appendChild(delBtn);
                 contactList.appendChild(li);
             });
+        }
+        async function deleteContact(name){
+            await fetch (`${apiUrl}/${name}`, {method:"DELETE"});
+            loadContacts();
+        }
+        async function updateContact(name){
+            const phone = prompt ("Nuevo telefono: ");
+            const email = prompt ("Nuevo email: ");
+            const updated = {name, phone, email};
+
+            await fetch(`${apiUrl}/${name}`, {
+                method: "PUT",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(updated)
+            });
+            loadContacts();
         }
 
         form.addEventListener("submit", async (e) =>{

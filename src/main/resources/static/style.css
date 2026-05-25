@@ -1,25 +1,60 @@
-body{
+body {
     font-family: Arial, sans-serif;
+    margin: 20px;
     background-color: #f9f9f9;
-    text-align: center;
-    margin: 40px;
+    justify-content: center;
 }
 
-form input{
+h1, h2 {
+    color: #333;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input {
     margin: 5px;
     padding: 8px;
-
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-button{
-    background-color: #1693b4;
-    color: white;
+button {
+    margin: 5px;
+    padding: 8px 12px;
     border: none;
-    padding: 8px 12px ;
+    border-radius: 4px;
     cursor: pointer;
 }
 
-ul{
+button[type="submit"] {
+    background-color: #154ab2;
+    color: white;
+}
+
+button.edit {
+    background-color: #2196F3;
+    color: white;
+}
+
+button.delete {
+    background-color: rgb(244 67 54 / 0.75);
+    color: white;
+}
+
+ul {
     list-style-type: none;
     padding: 0;
+}
+
+li {
+    background: #fff;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }

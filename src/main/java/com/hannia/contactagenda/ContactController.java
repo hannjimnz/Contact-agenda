@@ -29,6 +29,15 @@ public class ContactController {
         contactService.deleteContact(name);
         return "Contacto Eliminado: " + name;
     }
+    @PutMapping("/{name}")
+    public String updateContact(@PathVariable String name, @RequestBody  Contact contact){
+        boolean updated = contactService.updateContact(name, contact);
+        if(updated){
+            return "Contacto Actualizado: " + name;
+        }else{
+            return "Contacto no encontrado: " + name;
+        }
+    }
 
 
 }
